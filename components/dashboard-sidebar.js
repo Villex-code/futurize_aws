@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
+import Image from "next/image";
 import {
   Box,
   Button,
