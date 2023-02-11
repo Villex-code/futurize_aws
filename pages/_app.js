@@ -28,7 +28,7 @@ const App = (props) => {
         <title>FuturizeAI</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <UserProvider>
+      <UserProvider loginUrl="/api/auth/login" profileUrl="/api/auth/me">
         <MyUserProvider>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <ThemeProvider theme={theme}>
