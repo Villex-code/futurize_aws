@@ -1,8 +1,9 @@
 var XLSX = require("xlsx");
 
+import PopUp from "./popUp";
 // This is for XLSX
 
-export const xlsToJson = (file) => {
+export const xlsToJson = (file, setJsonData) => {
   // read the contents of the file
   const reader = new FileReader();
   reader.onload = (e) => {
@@ -15,11 +16,13 @@ export const xlsToJson = (file) => {
     const json = XLSX.utils.sheet_to_json(sheet);
     // do something with the JSON data
     console.log("This is my json", json);
+
+    setJsonData(json);
   };
   reader.readAsBinaryString(file);
 };
 
-export function csvToJson(file) {
+export function csvToJson(file, setJsonData) {
   try {
     var reader = new FileReader();
     reader.readAsText(file);
@@ -37,17 +40,18 @@ export function csvToJson(file) {
         json.push(obj);
       }
       console.log(json);
+      setJsonData(json);
     };
   } catch (e) {
     console.error(e);
   }
 }
 
-export function handleFile(file) {
+export function handleFile(file, setJsonData) {
   if (file.name.endsWith(".xlsx") || file.name.endsWith(".xls")) {
-    xlsToJson(file);
+    xlsToJson(file, setJsonData);
   } else if (file.name.endsWith(".csv")) {
-    csvToJson(file);
+    csvToJson(file, setJsonData);
   } else {
     console.log("Not a valid file format");
   }

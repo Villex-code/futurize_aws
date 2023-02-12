@@ -40,7 +40,9 @@ const Clients = () => {
 
         // Parse the response from the server
         const responseJson = await response.json();
-        const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+        const res = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
         setData(responseJson);
       } catch (err) {
         console.error(err);
