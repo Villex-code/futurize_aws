@@ -21,14 +21,14 @@ const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const getLayout = Component.getLayout ?? ((page) => page);
-
+  const { user } = pageProps;
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <title>FuturizeAI</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <UserProvider loginUrl="/api/auth/login" profileUrl="/api/auth/me">
+      <UserProvider user={user}>
         <MyUserProvider>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <ThemeProvider theme={theme}>
