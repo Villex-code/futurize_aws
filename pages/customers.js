@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Box, Container } from "@mui/material";
 import { CustomerListResults } from "../components/customer/customer-list-results";
 import { CustomerListToolbar } from "../components/customer/customer-list-toolbar";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+
 import { DashboardLayout } from "../components/dashboard-layout";
 import { customers } from "../__mocks__/customers";
 import Clients from "../components/customer/Clients";
@@ -10,7 +10,7 @@ import Clients from "../components/customer/Clients";
 const Page = () => (
   <>
     <Head>
-      <title>Customers | FuturizeAI</title>
+      <title>Customers here | FuturizeAI</title>
     </Head>
     <Box
       component="main"
@@ -32,6 +32,6 @@ const Page = () => (
 
 Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
-// export const getServerSideProps = withPageAuthRequired();
+// export const getServerSideProps = myPageAuth();
 
 export default Page;

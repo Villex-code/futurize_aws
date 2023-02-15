@@ -10,8 +10,6 @@ const PopUp = (props) => {
 
   useEffect(() => {
     setData(props.jsonData);
-    console.log("My data is ", data);
-    console.log("Json data is here asdfkasdf : ", props.jsonData);
   }, []);
 
   const mycolumns = Object.keys(props.jsonData[0]).map((header) => ({
@@ -65,13 +63,10 @@ const PopUp = (props) => {
             >
               <DataGrid
                 rows={props.jsonData}
-                getRowId={(row) => row.reservation}
+                getRowId={(row) => row.RowNumber}
                 columns={mycolumns}
                 components={{
                   Toolbar: GridToolbar,
-                  Columns: undefined,
-                  Filters: undefined,
-                  Density: undefined,
                 }}
               />
             </Box>

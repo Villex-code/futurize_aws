@@ -17,6 +17,13 @@ export const xlsToJson = (file, setJsonData) => {
     // do something with the JSON data
     console.log("This is my json", json);
 
+    let count = 0;
+
+    for (let i in json) {
+      console.log("My ith json object is ", json[i]);
+      json[i]["RowNumber"] = count++;
+    }
+
     setJsonData(json);
   };
   reader.readAsBinaryString(file);
@@ -39,7 +46,13 @@ export function csvToJson(file, setJsonData) {
         }
         json.push(obj);
       }
-      console.log(json);
+      console.log("The csv json is", json);
+      let count = 0;
+
+      for (let i in json) {
+        console.log("My ith json object is ", json[i]);
+        json[i]["RowNumber"] = count++;
+      }
       setJsonData(json);
     };
   } catch (e) {
