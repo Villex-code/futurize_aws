@@ -22,6 +22,19 @@ export const xlsToJson = (file, setJsonData) => {
     for (let i in json) {
       console.log("My ith json object is ", json[i]);
       json[i]["RowNumber"] = count++;
+      if (json[i].hasOwnProperty("Check In")) {
+        var serialNumber = json[i]["Check In"];
+        var date = new Date((serialNumber - 25569) * 86400 * 1000); // Convert Excel serial number to JavaScript date object
+        var formattedDate = date.toLocaleString();
+        json[i]["Check In"] = formattedDate;
+      }
+
+      if (json[i].hasOwnProperty("Check Out")) {
+        var serialNumber = json[i]["Check Out"];
+        var date = new Date((serialNumber - 25569) * 86400 * 1000); // Convert Excel serial number to JavaScript date object
+        var formattedDate = date.toLocaleString();
+        json[i]["Check Out"] = formattedDate;
+      }
     }
 
     setJsonData(json);
@@ -52,6 +65,19 @@ export function csvToJson(file, setJsonData) {
       for (let i in json) {
         console.log("My ith json object is ", json[i]);
         json[i]["RowNumber"] = count++;
+        if (json[i].hasOwnProperty("Check In")) {
+          var serialNumber = json[i]["Check In"];
+          var date = new Date((serialNumber - 25569) * 86400 * 1000); // Convert Excel serial number to JavaScript date object
+          var formattedDate = date.toLocaleString();
+          json[i]["Check In"] = formattedDate;
+        }
+
+        if (json[i].hasOwnProperty("Check Out")) {
+          var serialNumber = json[i]["Check Out"];
+          var date = new Date((serialNumber - 25569) * 86400 * 1000); // Convert Excel serial number to JavaScript date object
+          var formattedDate = date.toLocaleString();
+          json[i]["Check Out"] = formattedDate;
+        }
       }
       setJsonData(json);
     };

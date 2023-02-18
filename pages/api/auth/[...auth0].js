@@ -1,5 +1,5 @@
-// pages/api/auth/[...auth0].js
-import auth0 from "../../../utils/auth0";
+import { handleAuth } from "@auth0/nextjs-auth0";
 
-// Use the instance method
-export default auth0.handleAuth();
+console.log("the AUTH0_SECRET env var is set: ", !!process.env.AUTH0_SECRET);
+
+export default handleAuth();

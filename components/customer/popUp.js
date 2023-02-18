@@ -25,9 +25,12 @@ const PopUp = (props) => {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        className="mb-4 overflow-auto"
+        className="mb-4 overflow-auto rounded-3xl m-10"
       >
-        <div className="bg-blue-50">
+        <div
+          className="bg-blue-50 rounded-3xl
+         "
+        >
           <Box m="20px">
             <Box
               m="40px 0 0 0"
@@ -47,7 +50,7 @@ const PopUp = (props) => {
                   borderBottom: "none",
                 },
                 "& .MuiDataGrid-virtualScroller": {
-                  backgroundColor: "#d3eaf2",
+                  backgroundColor: "none",
                 },
                 "& .MuiDataGrid-footerContainer": {
                   borderTop: "none",
