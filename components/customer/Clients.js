@@ -103,9 +103,6 @@ const Clients = () => {
             columns={columns}
             components={{
               Toolbar: GridToolbar,
-              Columns: undefined,
-              Filters: undefined,
-              Density: undefined,
             }}
           />
         </Box>
