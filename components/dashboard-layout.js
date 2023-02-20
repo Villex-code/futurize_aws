@@ -9,6 +9,8 @@ import Link from "next/link";
 import { Unlock } from "../icons/unlock";
 import notSigned from "./notSigned";
 import styles from "../styles/Home.module.css";
+import { useEffect } from "react";
+import Loading from "./loadingscreen.js/loading";
 
 const DashboardLayoutRoot = styled("div")(({ theme }) => ({
   display: "flex",
@@ -23,8 +25,24 @@ const DashboardLayoutRoot = styled("div")(({ theme }) => ({
 export const DashboardLayout = (props) => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const { user, error, isLoading } = useUser();
+  const [showLoading, setShowLoading] = useState(true);
 
-  if (isLoading) return <div>Loading...</div>;
+  useEffect(() => {
+    let timeoutId;
+
+    if (!isLoading) {
+      timeoutId = setTimeout(() => {
+        setShowLoading(false);
+      }, 2000);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [isLoading]);
+
+  if (isLoading || showLoading) {
+    return <Loading />;
+  }
+
   if (error) return <div>{error.message}</div>;
   const { children } = props;
   return (
@@ -63,7 +81,10 @@ export const DashboardLayout = (props) => {
         )}
       </DashboardLayoutRoot>
       <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
-      <DashboardSidebar onClose={() => setSidebarOpen(false)} open={isSidebarOpen} />
+      <DashboardSidebar
+        onClose={() => setSidebarOpen(false)}
+        open={isSidebarOpen}
+      />
     </AuthGuard>
   );
 };

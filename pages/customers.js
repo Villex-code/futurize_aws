@@ -2,12 +2,14 @@ import Head from "next/head";
 import { Box, Container } from "@mui/material";
 import { CustomerListResults } from "../components/customer/customer-list-results";
 import { CustomerListToolbar } from "../components/customer/customer-list-toolbar";
-import { WithPageAuthRequired } from "@auth0/nextjs-auth0";
+import {
+  withPageAuthRequired,
+  WithPageAuthRequired,
+} from "@auth0/nextjs-auth0";
 
 import { DashboardLayout } from "../components/dashboard-layout";
 import { customers } from "../__mocks__/customers";
 import Clients from "../components/customer/Clients";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 
 const Page = () => (
   <>
@@ -24,7 +26,7 @@ const Page = () => (
       <Container maxWidth={false}>
         <CustomerListToolbar />
         <Box sx={{ mt: 3 }}>
-          <CustomerListResults customers={customers} />
+          {/* <CustomerListResults customers={customers} /> */}
           <Clients />{" "}
         </Box>
       </Container>
@@ -34,6 +36,6 @@ const Page = () => (
 
 Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
-// export const getServerSideProps = withPageAuthRequired();
+export const getServerSideProps = withPageAuthRequired();
 
 export default Page;

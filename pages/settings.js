@@ -8,7 +8,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 const Page = () => (
   <>
     <Head>
-      <title>Settings | Material Kit</title>
+      <title>Settings | FuturizeAI</title>
     </Head>
     <Box
       component="main"

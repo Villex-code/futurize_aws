@@ -10,6 +10,8 @@ import { createEmotionCache } from "../utils/create-emotion-cache";
 import { registerChartJs } from "../utils/register-chart-js";
 import { MyUserProvider } from "../contexts/UserContext";
 import { theme } from "../theme";
+import { motion, AnimatePresense } from "framer-motion";
+import { useRouter } from "next/router";
 import { UserProvider, useUser } from "@auth0/nextjs-auth0/client";
 import "tailwindcss/tailwind.css";
 
@@ -18,6 +20,7 @@ registerChartJs();
 const clientSideEmotionCache = createEmotionCache();
 
 const App = (props) => {
+  const router = useRouter();
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -28,6 +31,7 @@ const App = (props) => {
         <title>FuturizeAI</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
+
       <UserProvider user={user}>
         <MyUserProvider>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
