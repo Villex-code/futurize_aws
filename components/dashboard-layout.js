@@ -33,7 +33,7 @@ export const DashboardLayout = (props) => {
     if (!isLoading) {
       timeoutId = setTimeout(() => {
         setShowLoading(false);
-      }, 2000);
+      }, 1000);
     }
 
     return () => clearTimeout(timeoutId);
